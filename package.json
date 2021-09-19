@@ -1,0 +1,21 @@
+{
+  "name": "rxg-api-wrapper",
+  "version": "1.0.0",
+  "description": "API Wrapper for the rXg controller",
+  "main": "src/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinmuscara/rXg-api-wrapper.git"
+  },
+  "keywords": [],
+  "author": "Kevin Muscara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinmuscara/rXg-api-wrapper/issues"
+  },
+  "homepage": "https://github.com/kevinmuscara/rXg-api-wrapper#readme",
+  "dependencies": {
+    "axios": "^0.21.4"
+  }
+}
