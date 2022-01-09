@@ -78,6 +78,23 @@ class rXg {
     })
   }
 
+  execute = async(table, request) => {
+    return new Promise(async(resolve, reject) => {
+      let postOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        url: `${this.url}/${table}/execute?api_key=${this.apiKey}`,
+        body: {
+          request
+        }
+      }
+
+      axios(postOptions).then(async(res) => {
+        resolve(res.data)
+      })
+    })
+  }
+
   list = async(table) => {
     return new Promise(async(resolve, reject) => {
       axios.get(`${this.url}/${table}/index.json?api_key=${this.apiKey}`).then(async(res) => {

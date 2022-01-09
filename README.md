@@ -143,3 +143,19 @@ client.delete('devices', 1).then(res => console.log(res))
 { status: 200 }
 **/
 ```
+Execute
+
+```js
+const { rXg } = require('rxg')
+
+let client = new rXg({
+  apiKey: 'rxg_api_key',
+  domain: 'https://your.rxg.domain'
+})
+
+client.execute('accounts', { record_id: 1, method_name: 'quota' }).then(res => console.log(res))
+
+/** Example Response
+"\"1000 MB / 1000 MB\""
+**/
+```
