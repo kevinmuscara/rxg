@@ -1,5 +1,5 @@
 # rXg-api-wrapper
-Simple wrapper with create, read, update, and delete features that interface with rXg's REST API.
+Simple wrapper with create, read, update, delete, and execute features that interface with rXg's REST API.
 
 ## Install
 

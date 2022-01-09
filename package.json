@@ -1,7 +1,7 @@
 {
   "name": "rxg",
-  "version": "1.0.1",
-  "description": "Simple wrapper with create, read, update, and delete features that interface with rXg's REST API.",
+  "version": "1.0.2",
+  "description": "Simple wrapper with create, read, update, delete, and execute features that interface with rXg's REST API.",
   "main": "src/index.js",
   "scripts": {},
   "repository": {
