@@ -1,19 +1,98 @@
-const { 
-  search_Devices,
-  create_Device
-} = require('./controllers/devicesController')
+const axios = require('axios')
 
 class rXg {
   constructor(config = {}) {
-    console.assert(config, `config parameter not found.`)
+    console.assert(config, 'Config parameter is required.')
 
-    let { baseURL, apiKey } = config
-    this.baseURL = baseURL
+    const { apiKey, domain } = config
+
+    if(domain.startsWith('https://')) {
+      this.url = `${domain}/admin/scaffolds`
+    } else {
+      this.url = `https://${domain}/admin/scaffolds`
+    }
     this.apiKey = apiKey
   }
 
-  searchDevices = (searchParams) => search_Devices({ host: this.baseURL, apiKey: this.apiKey, ...searchParams })
-  createDevice  = (deviceParams) => create_Device({ host: this.baseURL, apiKey: this.apiKey, ...deviceParams })
+  create = async(table, new_record) => {
+    return new Promise(async(resolve, reject) => {
+      let data = [];
+
+      for(var prop in new_record) {
+        var encodeKey = encodeURIComponent(prop)
+        var encodedValue = encodeURIComponent(new_record[prop])
+        data.push(encodeKey + '=' + encodedValue)
+      }
+
+      data = data.join('&')
+
+      let postOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data,
+        url: `${this.url}/${table}/create?api_key=${this.apiKey}`
+      }
+
+      axios(postOptions).then(async(res) => {
+        resolve({ status: res.status})
+      })
+    })
+  }
+
+  update = async(table, id, new_record) => {
+    return new Promise(async(resolve, reject) => {
+      let data = [];
+
+      for(var prop in new_record) {
+        var encodeKey = encodeURIComponent(prop)
+        var encodedValue = encodeURIComponent(new_record[prop])
+        data.push(encodeKey + '=' + encodedValue)
+      }
+
+      data = data.join('&')
+
+      let postOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data,
+        url: `${this.url}/${table}/update/${id}?api_key=${this.apiKey}`
+      }
+  
+      axios(postOptions).then(async(res) => {
+        resolve({ status: res.status })
+      })
+    })
+  }
+
+  delete = async(table, id) => {
+    return new Promise(async(resolve, reject) => {
+      let postOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        url: `${this.url}/${table}/destroy/${id}?api_key=${this.apiKey}`
+      }
+
+      axios(postOptions).then(async(res) => {
+        resolve({ status: res.status })
+      })
+    })
+  }
+
+  list = async(table) => {
+    return new Promise(async(resolve, reject) => {
+      axios.get(`${this.url}/${table}/index.json?api_key=${this.apiKey}`).then(async(res) => {
+        resolve(res.data)
+      })
+    })
+  }
+
+  show = (table, object, key) => {
+    return new Promise(async(resolve, reject) => {
+      await axios.get(`${this.url}/${table}/index.json?api_key=${this.apiKey}&${object}=${key}`).then((res) => {
+        resolve(res.data)
+      })
+    })
+  }
 }
 
 module.exports = { rXg }

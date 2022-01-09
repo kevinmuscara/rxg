@@ -1,7 +1,7 @@
 {
-  "name": "rxg-api-wrapper",
+  "name": "rxg",
   "version": "1.0.0",
-  "description": "API Wrapper for the rXg controller",
+  "description": "Simple wrapper with create, read, update, and delete features that interface with rXg's REST API.",
   "main": "src/index.js",
   "scripts": {},
   "repository": {
