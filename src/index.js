@@ -6,11 +6,9 @@ class rXg {
 
     const { apiKey, domain } = config
 
-    if(domain.startsWith('https://')) {
-      this.url = `${domain}/admin/scaffolds`
-    } else {
-      this.url = `https://${domain}/admin/scaffolds`
-    }
+    if(domain.startsWith('https://')) this.url = `${domain}/admin/scaffolds`
+
+    this.url = `https://${domain}/admin/scaffolds`
     this.apiKey = apiKey
   }
 
