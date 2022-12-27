@@ -6,15 +6,15 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevinmuscara/rXg-api-wrapper.git"
+    "url": "git+https://github.com/kevinmuscara/rXg.git"
   },
   "keywords": [],
   "author": "Kevin Muscara",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kevinmuscara/rXg-api-wrapper/issues"
+    "url": "https://github.com/kevinmuscara/rxg/issues"
   },
-  "homepage": "https://github.com/kevinmuscara/rXg-api-wrapper#readme",
+  "homepage": "https://github.com/kevinmuscara/rxg#readme",
   "dependencies": {
     "axios": "^0.21.4"
   }
